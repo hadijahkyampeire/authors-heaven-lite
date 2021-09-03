@@ -1,0 +1,28 @@
+.bx--card {
+  border: 1px solid #2ecc71;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+
+  .bx--card-footer {
+    display: flex;
+    justify-content: space-between;
+    .bx--btn--primary {
+      background-color: white !important;
+      border-color: none !important;
+      color: #2ecc71;
+      &:active {
+        background-color: white !important;
+        color: #2ecc71;
+        outline: none;
+        border-color: none;
+      }
+    }
+    .bx--btn--primary:focus {
+      background-color: white !important;
+      border-color: none !important;
+      outline: 0 !important;
+      color: #2ecc71;
+      box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+    }
+  }
+}
