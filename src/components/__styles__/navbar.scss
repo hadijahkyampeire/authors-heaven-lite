@@ -1,0 +1,73 @@
+$primary-green: #2ecc71;
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  height: 4rem;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid $primary-green;
+  margin-bottom: 1rem;
+
+  .logo {
+    display: flex;
+    span {
+      margin-top: 1rem;
+      margin-left: -1.5rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  .custom-search {
+    width: 25rem;
+    &:active {
+      outline: none;
+      border-color: none;
+    }
+  }
+  .custom-search:focus {
+    outline: 0 !important;
+    border: none !important;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+  }
+  .right-section {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+  }
+  .auth-buttons {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      padding: 1rem 2.5rem;
+      font-size: 1rem;
+      outline: none;
+    }
+    .login-btn {
+      background-color: $primary-green;
+      margin-right: 1rem;
+      &:active {
+        outline: none;
+        border-color: none;
+      }
+    }
+    .login-btn:focus {
+      border-color: $primary-green !important;
+      outline: 0 !important;
+      box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+    }
+    .signup-btn {
+      border-color: $primary-green;
+      color: $primary-green;
+      &:hover {
+        background-color: transparent;
+      }
+    }
+    .signup-btn:focus {
+      border-color: $primary-green !important;
+      background-color: #fff;
+      outline: 0 !important;
+      box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+    }
+  }
+}
