@@ -32,7 +32,7 @@ $primary-green: #2ecc71;
   .right-section {
     display: flex;
     justify-content: space-between;
-    width: 30%;
+    // width: 30%;
   }
   .auth-buttons {
     display: flex;
@@ -69,5 +69,21 @@ $primary-green: #2ecc71;
       outline: 0 !important;
       box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
     }
+  }
+  .user-avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 1rem;
+  }
+
+  .logout-button {
+    cursor: pointer;
+    margin-left: 1rem;
+  }
+  .logout-button svg {
+    width: 1.5rem;
+    height: 2.5rem;
   }
 }

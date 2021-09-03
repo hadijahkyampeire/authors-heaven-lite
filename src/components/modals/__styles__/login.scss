@@ -4,4 +4,26 @@ $primary-green: #2ecc71;
   .bx--btn.bx--btn--primary {
     background-color: $primary-green;
   }
+  .google-login-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem;
+    color: $primary-green;
+    border: 1px solid $primary-green;
+    margin-bottom: 1rem;
+  }
+  .horizontal-divider {
+    display: block;
+    background-color: black;
+    height: 0.05rem;
+    margin: 2rem 0;
+  }
+}
+.bx--modal-header {
+  text-align: center;
+}
+.bx--modal-container .bx--modal-header, .bx--modal-container .bx--modal-content, .bx--modal-container .bx--modal-content__regular-content {
+  padding: 1rem 2rem;
 }
