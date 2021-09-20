@@ -1,19 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { Search } from 'carbon-components-react';
+import { Search, Link } from 'carbon-components-react';
 import logo from '../res/authors-logo.jpeg'
-import { LoginModal, SignUpModal } from './modals';
 import { auth } from '.././firebase';
 import { LogoutIcon } from 'components/icons';
 
 import './__styles__/navbar.scss';
 
-export const NavBar = () => {
-  const [openLogin, setOpenLogin] = useState(false);
-  const [openSignUp, setOpenSignUp] = useState(false);
-  const logout = () => auth.signOut();
+interface Props {
+  user?: string;
+  logout: () => void;
+  isLoggedIn?: boolean;
+};
 
-  console.log(auth, 'a')
+export const NavBar: React.FC<Props> = ({ user, logout, isLoggedIn }) => {
+  const logoutUser = () => {
+    logout();
+    auth.signOut();
+  };
+
+
   return (
     <div className="navbar-container">
       <div className="logo">
@@ -21,21 +27,20 @@ export const NavBar = () => {
         <span>uthors's Heaven</span>
       </div>
       <div><Search id="search-1" placeHolderText="Search" labelText= '' className="custom-search" /></div>
-      <div className="right-section">
-        <div className="auth-buttons">
-          <button className="bx--btn bx--btn--primary login-btn" type="button" onClick={() => setOpenLogin(true)}>Sign In</button>
-          <button className="bx--btn bx--btn--tertiary signup-btn" type="button" onClick={() => setOpenSignUp(true)}>Sign Up</button>
+      {isLoggedIn ? 
+        <div className="right-section">
+          <img src={auth?.currentUser?.photoURL || ""} className="user-avatar" alt="User" />
+          <span className="username">{user || auth?.currentUser?.displayName}</span>
+          <div className="logout-button" onClick={logoutUser}><LogoutIcon /></div>
         </div>
-        {auth?.currentUser ?
-          (
-            <>
-            <img src={auth?.currentUser?.photoURL || ""} className="user-avatar" alt="User" />
-            <div className="logout-button" onClick={logout}><LogoutIcon /></div>
-          </>
-          ) : null }
-      </div>
-      <LoginModal open={openLogin} closeModal={() => setOpenLogin(false)} />
-      <SignUpModal open={openSignUp} closeModal={() => setOpenSignUp(false)} />
+        :
+        <div className="right-section">
+          <div className="auth-buttons">
+            <Link className="bx--btn bx--btn--secondary login-btn" type="button" href="/login" >Sign In</Link>
+            <Link className="bx--btn bx--btn--secondary login-btn" type="button" href="/register" >Register</Link>
+          </div>
+        </div>
+        }
     </div>
   )
 };
