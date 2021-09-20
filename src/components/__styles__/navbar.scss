@@ -32,7 +32,16 @@ $primary-green: #2ecc71;
   .right-section {
     display: flex;
     justify-content: space-between;
-    // width: 30%;
+    width: 20%;
+    align-items: center;
+    margin-right: 0.5rem;
+
+    .username {
+      color: $primary-green;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-left: 0.5rem;
+    }
   }
   .auth-buttons {
     display: flex;
@@ -46,6 +55,9 @@ $primary-green: #2ecc71;
     .login-btn {
       background-color: $primary-green;
       margin-right: 1rem;
+      padding: 1rem 2.5rem;
+      font-size: 1rem;
+      color: white;
       &:active {
         outline: none;
         border-color: none;
@@ -76,6 +88,7 @@ $primary-green: #2ecc71;
     height: 50px;
     border-radius: 50%;
     margin-left: 1rem;
+    background-color: beige;
   }
 
   .logout-button {

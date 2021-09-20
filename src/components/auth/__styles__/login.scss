@@ -1,0 +1,61 @@
+$primary-green: #2ecc71;
+
+.login-page {
+  margin: auto;
+  margin-top: 3rem;
+  width: 40%;
+  border: 1px dotted $primary-green;
+  padding: 2rem;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  form {
+    margin-bottom: 1rem;
+  }
+  .action-buttons {
+    display: flex;
+    justify-content: space-between;
+
+    .button {
+      padding: 1rem 2.5rem;
+      font-size: 1rem;
+      outline: none;
+    }
+  }
+  .cancel-login-btn {
+    background-color: gray;
+    color: #000;
+  }
+  .submit-login {
+    background-color: $primary-green;
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+  }
+
+  .submit-login:focus {
+    border-color: $primary-green !important;
+    background-color: $primary-green;
+    color: white;
+    outline: 0 !important;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+  }
+  .google-login-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem;
+    color: $primary-green;
+    border: 1px solid $primary-green;
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+  .horizontal-divider {
+    display: block;
+    background-color: black;
+    height: 0.05rem;
+    margin: 2rem 0;
+  }
+}
