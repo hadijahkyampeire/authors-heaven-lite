@@ -26,7 +26,7 @@ export const NavBar: React.FC<Props> = ({ user, logout, isLoggedIn }) => {
         <img src={logo} className="App-logo" alt="logo" />
         <span>uthors's Heaven</span>
       </div>
-      <div><Search id="search-1" placeHolderText="Search" labelText= '' className="custom-search" /></div>
+      <div><Search id="search-1" placeholder="Search" labelText= '' className="custom-search" /></div>
       {isLoggedIn ? 
         <div className="right-section">
           <img src={auth?.currentUser?.photoURL || ""} className="user-avatar" alt="User" />

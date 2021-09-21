@@ -5,7 +5,7 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import { Landing } from 'components/auth';
 import { ConnectedNavBar as NavBar } from 'containers';
 import { Login, Register } from 'containers/auth';
-import { Dashboard } from 'components/dashboard';
+import { AddArticlePage, ArticlesPage, ArticlePage } from 'containers/articles';
 import { AppState } from 'types';
 import { requireAnonymous, requireAuthenticated } from 'auth';
 import './App.scss';
@@ -23,7 +23,9 @@ const App: React.FC<Props> = () => {
         <Route exact path="/" component={requireAnonymous(Landing)} />
         <Route path="/register" component={requireAnonymous(Register)} />
         <Route path="/login" component={requireAnonymous(Login)} />
-        <Route path="/dashboard" component={requireAuthenticated(Dashboard)} />
+        <Route path="/articles/new" component={requireAuthenticated(AddArticlePage)} />
+        <Route path="/articles/:slug" component={requireAuthenticated(ArticlePage)} />
+        <Route exact path="/articles/" component={requireAuthenticated(ArticlesPage)} />
       </Switch>
     </BrowserRouter>
   );
