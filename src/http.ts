@@ -1,5 +1,5 @@
 import axios, { AxiosTransformer } from "axios";
-import { addAuthToken } from "./auth"; // failed to respect module here because of a circular import issue
+import { addAuthToken, redirectIfNotLoggedIn } from "./auth";
 
 const BASE_URL = 'http://authors-social-platform.herokuapp.com/api/v1';
 
@@ -30,7 +30,7 @@ const defaultResponseTransformers = (): AxiosTransformer[] => {
 export const authenticatedInstance = axios.create({
   baseURL: BASE_URL,
   transformRequest: [...defaultRequestTransformers(), addAuthToken],
-  transformResponse: [...defaultResponseTransformers()]
+  transformResponse: [...defaultResponseTransformers(), redirectIfNotLoggedIn]
 });
 
 export const unAuthenticatedInstance = axios.create({

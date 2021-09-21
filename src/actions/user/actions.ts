@@ -2,15 +2,7 @@ import UserService from 'services/user';
 import { UserData } from "types/user";
 import { toast } from 'react-toastify';
 import { LOGIN_ACTION, REGISTER_ACTION, LOGOUT_ACTION, GOOGLE_LOGIN } from './actionTypes';
-
-export function typedAction<T extends string>(type: T): { type: T };
-export function typedAction<T extends string, P extends any>(
-  type: T,
-  payload: P
-): { type: T; payload: P };
-export function typedAction(type: string, payload?: any) {
-  return { type, payload };
-}
+import { typedAction } from '../utils';
 
 
 export const logout = () => {

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { registerUser } from 'actions';
-import { SignUpPage} from 'components/auth';
+import { SignUpPage } from 'components/auth';
 import { AppState } from 'types';
 
 
