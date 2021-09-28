@@ -1,20 +1,25 @@
 import React from 'react';
-import { connect } from 'react-redux';
+
 import { ToastContainer } from "react-toastify";
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import { Landing } from 'components/auth';
 import { ConnectedNavBar as NavBar } from 'containers';
 import { Login, Register } from 'containers/auth';
-import { AddArticlePage, ArticlesPage, ArticlePage } from 'containers/articles';
-import { AppState } from 'types';
+import { 
+  AddArticlePage, 
+  ArticlesPage, 
+  ArticlePage, 
+  PublishedArticlesPage, 
+  PublishedArticlePage,
+  EditArticlePage 
+} from 'containers/articles';
 import { requireAnonymous, requireAuthenticated } from 'auth';
 import './App.scss';
 import "react-toastify/dist/ReactToastify.css";
 
-interface Props {
-  isLoggedIn?: boolean;
-}
-const App: React.FC<Props> = () => {
+
+const App = () => {
+  
   return (
     <BrowserRouter>
       <NavBar />
@@ -23,16 +28,16 @@ const App: React.FC<Props> = () => {
         <Route exact path="/" component={requireAnonymous(Landing)} />
         <Route path="/register" component={requireAnonymous(Register)} />
         <Route path="/login" component={requireAnonymous(Login)} />
+        <Route path="/articles/published/:slug" component={requireAuthenticated(PublishedArticlePage)} />
         <Route path="/articles/new" component={requireAuthenticated(AddArticlePage)} />
+        <Route path="/articles/published" component={requireAuthenticated(PublishedArticlesPage)} />
+        <Route path="/articles/:slug/edit" component={requireAuthenticated(EditArticlePage)} />
         <Route path="/articles/:slug" component={requireAuthenticated(ArticlePage)} />
-        <Route exact path="/articles/" component={requireAuthenticated(ArticlesPage)} />
+        <Route path="/articles/" component={requireAuthenticated(ArticlesPage)} />
+        
       </Switch>
     </BrowserRouter>
   );
 }
-const mapStateToProps = (state: AppState) =>  ({
-  isLoggedIn: state.auth.isLoggedIn,
-});
 
-const connectedApp = connect(mapStateToProps, null)(App);
-export default connectedApp;
+export default App;

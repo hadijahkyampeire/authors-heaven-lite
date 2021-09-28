@@ -4,6 +4,10 @@ $primary-green: #2ecc71;
   margin: 1rem 2rem;
   padding: 1rem;
 
+  .tabs {
+    width: 85%;
+    margin: auto;
+  }
   h2 {
     margin-bottom: 1rem;
     margin-left: 6rem;
@@ -12,6 +16,8 @@ $primary-green: #2ecc71;
     position: fixed;
     bottom: 3rem;
     right: 9rem;
+    z-index: 3;
+    background-color: white;
     svg {
       width: 2rem;
       height: 2rem;

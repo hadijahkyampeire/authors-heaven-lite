@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@types/carbon__icons-react": "^10.31.2",
     "@types/jest": "^26.0.15",
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
@@ -21,6 +22,7 @@
     "carbon-components": "^10.25.0",
     "carbon-components-react": "^7.25.0",
     "carbon-icons": "^7.0.7",
+    "classnames": "^2.3.1",
     "firebase": "^8.10.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -34,6 +36,7 @@
     "redux-auth-wrapper": "^3.0.0",
     "redux-firestore": "^0.15.0",
     "redux-logger": "^3.0.6",
+    "redux-mock-store": "^1.5.4",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
     "sass-loader": "^12.1.0",
@@ -43,7 +46,7 @@
   "scripts": {
     "start": "PORT=3030 react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -68,6 +71,7 @@
     "@types/carbon-components-react": "^7.36.1",
     "@types/lodash": "^4.14.173",
     "@types/react-router-dom": "^5.1.8",
+    "@types/redux-mock-store": "^1.0.3",
     "gulp-sass": "^5.0.0",
     "sass": "^1.39.0"
   }

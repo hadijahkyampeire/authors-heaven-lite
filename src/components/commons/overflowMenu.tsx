@@ -14,6 +14,7 @@ export const OverFlowMenu: React.FC<Props> = ({ options }) => {
     >
       {options.map((option: any) => 
         <OverflowMenuItem
+          key={option.text}
           className={option.text}
           itemText={option.text}
           onClick={option.onClick}

@@ -5,18 +5,34 @@ const create = (data: ArticleData) => {
   return authenticatedInstance.post("/articles/", data);
 };
 
-const retrieveAll = () => {
-  return authenticatedInstance.get("/articles/");
+const retrieveAll = (url: string) => {
+  return authenticatedInstance.get(`${url}`);
 };
 
-const getArticle = (slug: string) => {
-  return authenticatedInstance.get(`/articles/${slug}`);
+const retrievePublishedArticles = (url: string) => {
+  return authenticatedInstance.get(`${url}`);
 };
+
+const getArticle = (url: string) => {
+  return authenticatedInstance.get(`${url}/`);
+};
+
+const updateArticle = (url: string, newData: ArticleData) => {
+  return authenticatedInstance.put(`${url}/`, newData);
+};
+
+const deleteArticle = (url: string) => {
+  return authenticatedInstance.delete(`${url}/`);
+};
+
 
 const ArticlesService = {
   create,
   retrieveAll,
-  getArticle
+  getArticle,
+  retrievePublishedArticles,
+  updateArticle,
+  deleteArticle
 };
 
 export default ArticlesService;

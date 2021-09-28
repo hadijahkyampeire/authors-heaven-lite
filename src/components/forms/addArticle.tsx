@@ -1,26 +1,16 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { ChangeEvent } from 'react';
 import { Form, TextInput, Link, Button, TextArea } from 'carbon-components-react';
-import { createArticle } from 'actions/articles';
 import { ArticleData, ApiArticle } from 'types/articles';
 
 interface Props {
-  onSubmit: (
-    ...args: Parameters<typeof createArticle>
-  ) => void;
+  onSubmit: Function
   newArticle?: ApiArticle;
+  form: ArticleData;
+  setForm: Function;
+  context?: string;
 };
-export const AddArticleForm: React.FC<Props> = ({ newArticle, onSubmit }) => {
-  const initialValues: ArticleData = {
-    title: "",
-    description: "",
-    body: "",
-    favourited: false,
-    published: false
-    
-  };
-
-  const [form, setForm] = useState<ArticleData>(initialValues);
-
+export const AddArticleForm: React.FC<Props> = ({ onSubmit, form, setForm, context }) => {
+ 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setForm({ ...form, [name]: value });
@@ -31,9 +21,9 @@ export const AddArticleForm: React.FC<Props> = ({ newArticle, onSubmit }) => {
     setForm({ ...form, [name]: value });
   };
 
-  const formToSubmit = {...form, published: true }
+  const handleSave = (e: any) => { e.preventDefault(); onSubmit(form);}
   return (
-    <Form onSubmit={(e) => { e.preventDefault(); onSubmit(formToSubmit); }}>
+    <Form>
       <div style={{marginBottom: '2rem'}}>
       <TextInput
         id="title"
@@ -69,8 +59,24 @@ export const AddArticleForm: React.FC<Props> = ({ newArticle, onSubmit }) => {
       />
     </div>
     <div className="action-buttons">
-      <Link className="button cancel-create-btn" href='/articles'>Cancel</Link>
-      <Button className="bx--btn bx--btn--primary submit-article" type="submit">Submit And Publish</Button>
+      <Link className="button cancel-create-btn" href='/articles/'>Cancel</Link>
+      {context === 'Edit' ?
+      form.published ? 
+      <Button className="bx--btn bx--btn--primary submit-article" onClick={e => onSubmit(e)}>Update Article</Button>
+      : (
+        <>
+        <Button className="bx--btn bx--btn--secondary submit-article" onClick={e => handleSave(e)}>Update as Draft</Button>
+        <Button className="bx--btn bx--btn--primary submit-article" onClick={e => onSubmit(e)}>Update And Publish</Button>
+        </>
+      )
+      :
+      (
+        <>
+          <Button className="bx--btn bx--btn--secondary submit-article" onClick={e => handleSave(e)}>Save as Draft</Button>
+          <Button className="bx--btn bx--btn--primary submit-article" onClick={e => onSubmit(e)}>Submit And Publish</Button>
+        </>
+      )
+      }
     </div>
   </Form>
   );

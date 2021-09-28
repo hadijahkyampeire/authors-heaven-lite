@@ -12,7 +12,7 @@ const mapStateToProps = (state: AppState) => ({
 });
 const mapDispatchToProps = { fetchArticle: getSingleArticle };
 
-export const ArticlePage = connect(
+export const PublishedArticlePage = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Article);
