@@ -4,6 +4,7 @@ import { createArticle } from 'actions/articles';
 import { AddArticleForm } from 'components/forms';
 import { Redirect } from 'react-router';
 import { ArticleData } from 'types/articles';
+import { Header } from "components/commons";
 
 import './__styles__/addArticle.scss';
 
@@ -33,7 +34,7 @@ export const AddArticle: React.FC<Props> = ({ newArticle, onSubmit }) => {
   }
   return (
     <section className="add-article-page">
-      <h2>Create Article</h2>
+      <Header title='Create Article'/>
       <AddArticleForm newArticle={newArticle} onSubmit={handlePublish} form={form} setForm={setForm} />
     </section>
   );

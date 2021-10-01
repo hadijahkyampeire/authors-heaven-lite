@@ -7,14 +7,15 @@ import { ApiArticlesState } from 'types/articles';
 import { AddIcon } from 'components/icons';
 import { ContainerTabs } from 'components/commons';
 import './__styles__/articles.scss';
-import { fetchArticles } from 'actions/articles';
+import { fetchArticles, deleteArticle } from 'actions/articles';
 
 interface Props {
   articles: ApiArticlesState;
   fetchArticles: (...args: Parameters<typeof fetchArticles>) => void;
+  deleteArticle: (...args: Parameters<typeof deleteArticle>) => void;
+  email?: string;
 }
-export const Articles: React.FC<Props> = ({ articles = {}, fetchArticles }) => {
-  console.log(articles, 'articles')
+export const Articles: React.FC<Props> = ({ articles = {}, fetchArticles, deleteArticle, email }) => {
   const { count, results } = articles;
   const { pathname: url } = useLocation();
   useEffect(() => {
@@ -32,7 +33,7 @@ export const Articles: React.FC<Props> = ({ articles = {}, fetchArticles }) => {
       <ContainerTabs tabslist={tabslist} currentPageUrl={url} />
       <div className="tiles-container">
       {results && results.length 
-        ? results.map(article => <DataTile article={article} key={article.slug} />)
+        ? results.map(article => <DataTile article={article} key={article.slug} handleDelete={() => deleteArticle(article.slug)} email={email} />)
         : <div className="no-articles">No Articles Found, Please add some</div>}
       </div>
       <Link to='/articles/new/' className="add-article-button"><AddIcon /></Link>

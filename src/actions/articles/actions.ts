@@ -8,7 +8,7 @@ import {
   DELETE_ARTICLE,
   UPDATE_ARTICLE 
 } from "./actionTypes";
-import { typedAction } from '../utils';
+import { typedAction, resetAction } from '../utils';
 
 export function createArticle(data: ArticleData) {
   return function(dispatch: Function) {
@@ -50,9 +50,9 @@ export function getSingleArticle(url: string) {
   };
 };
 
-export function updateArticle(url: string, data: ArticleData) {
+export function updateArticle(slug: string | undefined, data: ArticleData) {
   return function(dispatch: Function) {
-    return ArticleService.updateArticle(url, data)
+    return ArticleService.updateArticle(slug, data)
      .then((response) => {
       dispatch(typedAction(UPDATE_ARTICLE, data));
       toast.success('Article Updated');
@@ -64,7 +64,7 @@ export function updateArticle(url: string, data: ArticleData) {
   };
 };
 
-export function deleteArticle(url: string) {
+export function deleteArticle(url: string | undefined) {
   return function(dispatch: Function) {
     return ArticleService.deleteArticle(url)
      .then((response) => {
@@ -75,5 +75,11 @@ export function deleteArticle(url: string) {
       console.log(e);
       toast.error('Failure to delete article')
     });
+  };
+};
+
+export const resetEditArticle = () => {
+  return (dispatch: Function) => {
+    dispatch(resetAction(UPDATE_ARTICLE));
   };
 };

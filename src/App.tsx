@@ -11,7 +11,8 @@ import {
   ArticlePage, 
   PublishedArticlesPage, 
   PublishedArticlePage,
-  EditArticlePage 
+  EditArticlePage,
+  EditPublishedArticlePage 
 } from 'containers/articles';
 import { requireAnonymous, requireAuthenticated } from 'auth';
 import './App.scss';
@@ -28,6 +29,7 @@ const App = () => {
         <Route exact path="/" component={requireAnonymous(Landing)} />
         <Route path="/register" component={requireAnonymous(Register)} />
         <Route path="/login" component={requireAnonymous(Login)} />
+        <Route path="/articles/published/:slug/edit" component={requireAuthenticated(EditPublishedArticlePage)} />
         <Route path="/articles/published/:slug" component={requireAuthenticated(PublishedArticlePage)} />
         <Route path="/articles/new" component={requireAuthenticated(AddArticlePage)} />
         <Route path="/articles/published" component={requireAuthenticated(PublishedArticlesPage)} />

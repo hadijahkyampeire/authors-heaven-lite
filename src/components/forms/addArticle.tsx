@@ -1,5 +1,6 @@
 import React, { ChangeEvent } from 'react';
-import { Form, TextInput, Link, Button, TextArea } from 'carbon-components-react';
+import { useHistory } from 'react-router';
+import { Form, TextInput, Button, TextArea } from 'carbon-components-react';
 import { ArticleData, ApiArticle } from 'types/articles';
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
   context?: string;
 };
 export const AddArticleForm: React.FC<Props> = ({ onSubmit, form, setForm, context }) => {
+  const history = useHistory();
  
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -59,7 +61,7 @@ export const AddArticleForm: React.FC<Props> = ({ onSubmit, form, setForm, conte
       />
     </div>
     <div className="action-buttons">
-      <Link className="button cancel-create-btn" href='/articles/'>Cancel</Link>
+      <button className="button cancel-create-btn" onClick={(e) => {e.preventDefault(); history.goBack()}}>Cancel</button>
       {context === 'Edit' ?
       form.published ? 
       <Button className="bx--btn bx--btn--primary submit-article" onClick={e => onSubmit(e)}>Update Article</Button>

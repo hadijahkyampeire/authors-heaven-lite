@@ -5,12 +5,9 @@ import { AddArticle } from 'components/articles';
 import { AppState } from 'types';
 
 
-const mapStateToProps = (state: AppState) => {
-  console.log(state, 'state')
-  return ({
-    newArticle: state.articles.newArticle
-})
-};
+const mapStateToProps = (state: AppState) => ({
+  newArticle: state.articles.newArticle
+});
 const mapDispatchToProps = { onSubmit : createArticle };
 
 export const AddArticlePage = connect(

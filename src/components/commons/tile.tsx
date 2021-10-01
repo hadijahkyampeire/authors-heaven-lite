@@ -1,22 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation, useHistory } from "react-router";
 
 import { ApiArticle } from 'types/articles';
-import { OverFlowMenu } from 'components/commons';
+import { OverFlowMenu, DialogModal } from 'components/commons';
 
 interface Props {
   article: ApiArticle;
+  handleDelete: () => void;
+  email?: string;
 }
 
-export const DataTile: React.FC<Props> = ({ article }) => {
+export const DataTile: React.FC<Props> = ({ article, handleDelete, email }) => {
+  const [openDelete, setOpenDelete] = useState<string | undefined>(undefined);
+
   const { push: goTo } = useHistory();
   const { pathname: url } = useLocation();
   const { title, description, body, slug, author } = article;
   const overFlowOptions = [
-    {text: 'Delete Article', onClick: () => alert('delete') },
-    {text: 'Edit Article', onClick: () => goTo(`${url}${slug}/edit`)}
-  ]
+    {text: 'Delete Article', onClick: () => setOpenDelete(slug), disabled: author?.email !== email },
+    {text: 'Edit Article', onClick: () => goTo(`${url}${slug}/edit`), disabled: author?.email !== email}
+  ];
   
   const limit = 200;
   const truncate = body && body.trim().length > limit;
@@ -36,6 +40,12 @@ export const DataTile: React.FC<Props> = ({ article }) => {
           <span className="author">{author?.username}</span>
         </div>
         <OverFlowMenu options={overFlowOptions} />
+        <DialogModal 
+          title={`Delete ${title}`} 
+          text='Are you sure you want to delete this Article?' 
+          closeModal={() => setOpenDelete(undefined)}
+          open={openDelete === slug}
+          onSubmit={handleDelete} />
         </div>
     </div>
   );

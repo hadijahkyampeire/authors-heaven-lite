@@ -1,20 +1,22 @@
 import { useLocation } from "react-router";
 import { Link } from 'react-router-dom';
 
-import { getSingleArticle } from 'actions/articles';
-import React, { useEffect } from 'react';
+import { getSingleArticle, deleteArticle } from 'actions/articles';
+import React, { useEffect, useState } from 'react';
 import { ApiArticle } from 'types/articles';
-import { Header } from "components/commons";
+import { Header, DialogModal } from "components/commons";
 
 import './__styles__/article.scss';
 
 interface Props {
   article?: ApiArticle;
   fetchArticle: (...args: Parameters<typeof getSingleArticle>) => void;
+  deleteArticle: (...args: Parameters<typeof deleteArticle>) => void;
   email?: string;
 };
 
-export const Article: React.FC<Props> = ({ article, fetchArticle, email }) => {
+export const Article: React.FC<Props> = ({ article, fetchArticle, email, deleteArticle }) => {
+  const [openDelete, setOpenDelete] = useState<string | undefined>(undefined);
   const { pathname: url } = useLocation();
 
   useEffect(() => {
@@ -36,12 +38,19 @@ export const Article: React.FC<Props> = ({ article, fetchArticle, email }) => {
           <>
             <div className="article-footer">
               <Link to={`${url}/edit`}>Edit Article</Link>
-              <button>Delete Article</button>
+              <button onClick={() => setOpenDelete(article?.slug)}>Delete Article</button>
               <button>Share Article</button>
             </div>
           </>
           )
         : null}
+        <DialogModal 
+          open={openDelete === article?.slug} 
+          closeModal={() => setOpenDelete(undefined)}
+          onSubmit={() => deleteArticle(article?.slug)}
+          title={`Delete ${article?.title}`} 
+          text='Are you sure you want to delete this Article?' 
+           />
       </div>
     </section>
   );

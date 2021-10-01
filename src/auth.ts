@@ -25,7 +25,6 @@ export const isAuthenticated = (state: AppState) => state.auth.isLoggedIn;
 export const getLoggedUser = (state: AppState) => state.auth.user?.email;
 
 export const redirectIfNotLoggedIn = (response: any) => {
-  console.log(response, 'RESSS', isEmpty(response.errors))
   if (!isEmpty(response.errors)) {
     store.dispatch(action(LOGOUT_ACTION));
     localStorage.clear();

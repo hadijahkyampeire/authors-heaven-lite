@@ -17,12 +17,12 @@ const getArticle = (url: string) => {
   return authenticatedInstance.get(`${url}/`);
 };
 
-const updateArticle = (url: string, newData: ArticleData) => {
-  return authenticatedInstance.put(`${url}/`, newData);
+const updateArticle = (slug: string | undefined, newData: ArticleData) => {
+  return authenticatedInstance.put(`articles/${slug}`, newData);
 };
 
-const deleteArticle = (url: string) => {
-  return authenticatedInstance.delete(`${url}/`);
+const deleteArticle = (slug: string | undefined) => {
+  return authenticatedInstance.delete(`articles/${slug}`);
 };
 
 

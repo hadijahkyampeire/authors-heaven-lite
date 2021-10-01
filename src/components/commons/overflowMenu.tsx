@@ -18,6 +18,7 @@ export const OverFlowMenu: React.FC<Props> = ({ options }) => {
           className={option.text}
           itemText={option.text}
           onClick={option.onClick}
+          disabled={option.disabled}
         />
         )}
     </OverflowMenu>
