@@ -1,0 +1,26 @@
+$primary-green: #2ecc71;
+
+.app-header {
+  height: 3rem;
+  background-color: #2ecc71;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  margin-bottom: 2rem;
+  svg {
+    fill: white;
+  }
+  .title {
+    margin-left: 1rem;
+    color: white;
+    font-size: 1.25rem;
+  }
+  .bx--tooltip__trigger.bx--tooltip__trigger--definition {
+    border-bottom: none;
+  }
+
+  .bx--tooltip__trigger.bx--tooltip__trigger--definition.bx--tooltip--top + .bx--assistive-text {
+    background-color: #3b3b3b;
+    color: $primary-green;
+  }
+}

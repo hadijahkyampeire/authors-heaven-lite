@@ -5,3 +5,8 @@ export interface AppState {
   auth: UserState;
   articles: ArticlesState
 };
+
+export interface TabType {
+  name: string;
+  url: string;
+}

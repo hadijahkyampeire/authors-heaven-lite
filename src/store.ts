@@ -51,6 +51,7 @@ const middlewareByEnv: any = {
   development: () => [thunk, createLogger()],
   production: () => [thunk]
 };
+
 const middleware = middlewareByEnv[process.env.NODE_ENV]();
 export const store = createStore(persistedReducer, loadState(), applyMiddleware(...middleware));
 

@@ -1,0 +1,19 @@
+$primary-green: #2ecc71;
+
+.tabs {
+  border-bottom: 2px solid lightgray;
+  height: 2rem;
+
+  .tab {
+    padding: 1rem 2rem;
+    color: black;
+    text-decoration: none;
+    &:hover {
+      color: $primary-green;
+    }
+    &.active {
+      font-weight: bold;
+      border-bottom: 2px solid $primary-green;
+    }
+  }
+}
