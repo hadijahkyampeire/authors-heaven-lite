@@ -23,7 +23,7 @@ export const LoginForm: React.FC<Props> = ({ user, loginUser }) => {
     setForm({ ...form, [name]: value });
   };
   return (
-    <Form onSubmit={(e) => { e.preventDefault(); loginUser(form); }}>
+    <Form onSubmit={(e) => { e.preventDefault(); loginUser(form); }} data-testid="login-form">
       <div style={{marginBottom: '2rem'}}>
       <TextInput
         helperText="e.g example@gmail.com"

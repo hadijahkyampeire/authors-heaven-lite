@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignUpPage /> snapshot test 1`] = `
+<div>
+  <div
+    class="register-page"
+  >
+    <h2>
+      REGISTER
+    </h2>
+    <form
+      class="bx--form"
+      data-testid="signup-form"
+    >
+       
+      <div
+        style="margin-bottom: 2rem;"
+      >
+        <div
+          class="bx--form-item bx--text-input-wrapper"
+        >
+          <label
+            class="bx--label"
+            for="email"
+          >
+            Email
+          </label>
+          <div
+            class="bx--text-input__field-outer-wrapper"
+          >
+            <div
+              class="bx--text-input__field-wrapper"
+            >
+              <input
+                class="bx--text-input bx--text__input"
+                id="email"
+                name="email"
+                placeholder="Enter Email"
+                title="Enter Email"
+                type="text"
+                value=""
+              />
+            </div>
+            <div
+              class="bx--form__helper-text"
+            >
+              e.g example@gmail.com
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        style="margin-bottom: 2rem;"
+      >
+        <div
+          class="bx--form-item bx--text-input-wrapper"
+        >
+          <label
+            class="bx--label"
+            for="username"
+          >
+            Username
+          </label>
+          <div
+            class="bx--text-input__field-outer-wrapper"
+          >
+            <div
+              class="bx--text-input__field-wrapper"
+            >
+              <input
+                class="bx--text-input bx--text__input"
+                id="username"
+                name="username"
+                placeholder="Enter Username"
+                title="Enter Username"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        style="margin-bottom: 2rem;"
+      >
+        <div
+          class="bx--form-item bx--text-input-wrapper"
+        >
+          <label
+            class="bx--label"
+            for="password"
+          >
+            Password
+          </label>
+          <div
+            class="bx--text-input__field-outer-wrapper"
+          >
+            <div
+              class="bx--text-input__field-wrapper"
+            >
+              <input
+                class="bx--text-input bx--text__input"
+                id="password"
+                name="password"
+                placeholder="Enter password"
+                title="Enter password"
+                type="password"
+                value=""
+              />
+            </div>
+            <div
+              class="bx--form__helper-text"
+            >
+              Please choose a strong password with numbers, uppercase and special characters
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="action-buttons"
+      >
+        <a
+          class="bx--link button cancel-login-btn"
+        >
+          Cancel
+        </a>
+        <button
+          class="bx--btn bx--btn--primary submit-login"
+          type="submit"
+        >
+          Submit
+        </button>
+      </div>
+       
+    </form>
+    <span
+      class="signup-message"
+    >
+      Already have an account? 
+      <a
+        class="bx--link"
+        href="/login"
+      >
+        Login
+      </a>
+    </span>
+  </div>
+</div>
+`;
