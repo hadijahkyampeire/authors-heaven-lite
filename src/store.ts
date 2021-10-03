@@ -47,13 +47,14 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers)
-const middlewareByEnv: any = {
-  development: () => [thunk, createLogger()],
-  production: () => [thunk]
-};
 
-const middleware = middlewareByEnv[process.env.NODE_ENV]();
-export const store = createStore(persistedReducer, loadState(), applyMiddleware(...middleware));
+export const store = createStore(
+  persistedReducer, 
+  loadState(), 
+  process.env.NODE_ENV === "production"
+    ? applyMiddleware(reduxThunk)
+    : applyMiddleware(reduxThunk, createLogger())
+);
 
 store.subscribe(() => {
   saveState(store.getState());

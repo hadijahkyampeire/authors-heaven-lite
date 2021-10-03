@@ -1,3 +1,6 @@
+### [![Build Status](https://app.travis-ci.com/hadijahkyampeire/authors-heaven-lite.svg?branch=master)](https://app.travis-ci.com/hadijahkyampeire/authors-heaven-lite)
+
+### [![Coverage Status](https://coveralls.io/repos/github/hadijahkyampeire/authors-heaven-lite/badge.svg?branch=master)](https://coveralls.io/github/hadijahkyampeire/authors-heaven-lite?branch=master)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

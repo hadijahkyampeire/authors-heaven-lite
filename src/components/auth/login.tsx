@@ -1,6 +1,6 @@
 import React from 'react';
 import { toast } from 'react-toastify';
-import { useFirebase } from "react-redux-firebase";
+import firebase from 'firebase/app';
 
 import { LoginForm } from 'components/forms';
 import { provider }  from '../../firebase'; 
@@ -24,7 +24,6 @@ interface Props {
 
 export const LoginPage: React.FC<Props> = ({ username, loginUser, googleLogin, isLoggedIn  }) => {
 
-  const firebase = useFirebase();
   const signInWithGoogle = () => {
      firebase.auth().signInWithPopup(provider).then((result) => {
       const token = result?.credential;
@@ -41,7 +40,7 @@ export const LoginPage: React.FC<Props> = ({ username, loginUser, googleLogin, i
   return (
     <div className="login-page">
       <h2>LOGIN</h2>
-      <button onClick={(e) => {e.preventDefault(); signInWithGoogle(); }} className="google-login-btn"><GoogleIcon /> Sign In with Google</button>
+      <button onClick={(e) => {e.preventDefault(); signInWithGoogle(); }} className="google-login-btn" data-testid="google-login-btn"><GoogleIcon /> Sign In with Google</button>
       <div className="horizontal-divider" />
       <LoginForm user={username} loginUser={loginUser} />
       <span className="login-message">Don't have an account yet? <Link href="/">SignUp</Link></span>

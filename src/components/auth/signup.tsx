@@ -5,7 +5,7 @@ import { Link } from 'carbon-components-react';
 import { loginUser } from 'actions';
 import './__styles__/signup.scss';
 
-interface Props {
+export interface Props {
   registerUser: (
     ...args: Parameters<typeof loginUser>
   ) => void;

@@ -24,7 +24,7 @@ export const SignUpForm: React.FC<Props> = ({ user, registerUser }) => {
     setForm({ ...form, [name]: value });
   };
   return (
-    <Form onSubmit={(e) => { e.preventDefault(); registerUser(form); }}>
+    <Form onSubmit={(e) => { e.preventDefault(); registerUser(form); }} data-testid="signup-form">
     <div style={{marginBottom: '2rem'}}>
       <TextInput
         id="email"

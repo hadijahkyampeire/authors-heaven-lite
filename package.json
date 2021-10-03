@@ -47,7 +47,9 @@
     "start": "PORT=3030 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "coverage": "react-scripts test --env=jsdom --coverage",
+    "eject": "react-scripts eject",
+    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
   },
   "eslintConfig": {
     "extends": [
@@ -72,6 +74,7 @@
     "@types/lodash": "^4.14.173",
     "@types/react-router-dom": "^5.1.8",
     "@types/redux-mock-store": "^1.0.3",
+    "coveralls": "^3.1.1",
     "gulp-sass": "^5.0.0",
     "sass": "^1.39.0"
   }
