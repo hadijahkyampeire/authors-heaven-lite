@@ -1,7 +1,7 @@
 import UserService from 'services/user';
 import { UserData } from "types/user";
 import { toast } from 'react-toastify';
-import { LOGIN_ACTION, REGISTER_ACTION, LOGOUT_ACTION, GOOGLE_LOGIN } from './actionTypes';
+import { LOGIN_ACTION, REGISTER_ACTION, LOGOUT_ACTION, GOOGLE_LOGIN, LOGIN_REQUEST, REGISTER_REQUEST } from './actionTypes';
 import { typedAction } from '../utils';
 
 
@@ -13,15 +13,14 @@ export const logout = () => {
 };
 
 export const googleLogin = (user: {} | null) => {
-  console.log(user, 'auth')
   return function(dispatch: Function) {
       dispatch(typedAction(GOOGLE_LOGIN, user));
       toast.success('Login Successful');
   };
 };
 
-export function registerUser(data: UserData) {
-  return function(dispatch: Function) {
+export const registerUser = (data: UserData) => (dispatch: Function) => {
+    dispatch(typedAction(REGISTER_REQUEST));
     return UserService.signUp(data)
      .then(({ data }) => {
       const { user } = data;
@@ -33,10 +32,10 @@ export function registerUser(data: UserData) {
       toast.error('Failure during registration')
     });
   };
-};
 
 export function loginUser(data: UserData) {
   return function(dispatch: Function) {
+    dispatch(typedAction(LOGIN_REQUEST));
     return UserService.login(data)
      .then(({ data }) => {
        const { user } = data;

@@ -86,7 +86,8 @@
       "!**/src/reportWebVitals.ts",
       "!**/src/index.ts",
       "!**/*.eslintrc.ts",
-      "!**/coverage/**"
+      "!**/coverage/**",
+      "!**/store.ts"
     ]
   }
 }

@@ -24,7 +24,7 @@ function renderUI(props: Partial<articleFormProps> = {}) {
 describe("<ArticleForm />", () => {
 
   it("should handle title input change", async () => {
-    const { getByLabelText, getByText } = renderUI({});
+    const { getByLabelText } = renderUI({});
 
     const title: HTMLInputElement = getByLabelText("Title") as HTMLInputElement;
 
@@ -33,7 +33,7 @@ describe("<ArticleForm />", () => {
   });
 
   it("should handle description input change", async () => {
-    const { getByLabelText, getByText } = renderUI({});
+    const { getByLabelText } = renderUI({});
 
     const description: HTMLInputElement = getByLabelText("Description") as HTMLInputElement;
 

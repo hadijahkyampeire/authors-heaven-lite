@@ -111,6 +111,7 @@ exports[`<Articles /> snapshot test 1`] = `
           </button>
           <div
             class="bx--modal dialog-modal"
+            data-testid="dialog-modal"
             role="presentation"
           >
             <span
@@ -281,6 +282,7 @@ exports[`<Articles /> snapshot test 1`] = `
           </button>
           <div
             class="bx--modal dialog-modal"
+            data-testid="dialog-modal"
             role="presentation"
           >
             <span

@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Article /> snapshot test 1`] = `
+<div>
+  <section
+    class="article-page"
+    data-testid="article-page"
+  >
+    <div
+      class="app-header"
+    >
+      <span
+        class="bx--tooltip--definition bx--tooltip--a11y"
+      >
+        <button
+          aria-describedby="definition-tooltip-1"
+          class="bx--tooltip__trigger bx--tooltip--a11y bx--tooltip__trigger--definition bx--tooltip--top bx--tooltip--align-start"
+          type="button"
+        >
+          <div>
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              focusable="false"
+              height="32"
+              preserveAspectRatio="xMidYMid meet"
+              viewBox="0 0 32 32"
+              width="32"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M14 26L15.41 24.59 7.83 17 28 17 28 15 7.83 15 15.41 7.41 14 6 4 16 14 26z"
+              />
+            </svg>
+          </div>
+        </button>
+        <span
+          class="bx--assistive-text"
+          id="definition-tooltip-1"
+          role="tooltip"
+        >
+          Go Back
+        </span>
+      </span>
+      <div
+        class="title"
+      >
+        Viewing 1 one
+      </div>
+    </div>
+    <div>
+      <div
+        class="article-title"
+      >
+        1 one
+      </div>
+      <div
+        class="other-header"
+      >
+        <span
+          class="author"
+        >
+          By: 
+          test user
+        </span>
+        <span>
+          4
+        </span>
+        <span>
+          2 min read
+        </span>
+      </div>
+      <div
+        class="article-body"
+      >
+        <div
+          class="article-description"
+        >
+          desc
+        </div>
+        <div
+          class="article-body"
+        >
+          body
+        </div>
+      </div>
+      <div
+        class="article-footer"
+        data-testid="article-footer"
+      >
+        <a
+          href="//edit"
+        >
+          Edit Article
+        </a>
+        <button>
+          Delete Article
+        </button>
+        <button>
+          Share Article
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
+`;

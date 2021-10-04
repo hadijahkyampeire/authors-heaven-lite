@@ -19,6 +19,7 @@ export const DialogModal: React.FC<Props> = ({ text, closeModal, title, open, cl
   return (
     <Modal
       className={classNames('dialog-modal', className)}
+      data-testid='dialog-modal'
       open={open}
       modalHeading={title}
       passiveModal={true}
