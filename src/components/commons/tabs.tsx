@@ -12,7 +12,7 @@ interface Props {
 
 export const ContainerTabs: React.FC<Props> = ({ tabslist, currentPageUrl }) => {
   return (
-    <div className="tabs">
+    <div className="tabs" data-testid="tabs">
       {tabslist?.map(({ name, url }, index) => 
         <Link
           className={classnames('tab', {'active': currentPageUrl === url})}

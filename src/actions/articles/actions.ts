@@ -6,12 +6,15 @@ import {
   GET_ALL_ARTICLES, 
   GET_SINGLE_ARTICLE,
   DELETE_ARTICLE,
-  UPDATE_ARTICLE 
+  UPDATE_ARTICLE,
+  CREATE_ARTICLE_REQUEST,
+  GET_ALL_ARTICLES_REQUEST 
 } from "./actionTypes";
 import { typedAction, resetAction } from '../utils';
 
 export function createArticle(data: ArticleData) {
   return function(dispatch: Function) {
+    dispatch(typedAction(CREATE_ARTICLE_REQUEST))
     return ArticleService.create(data)
      .then((response) => {
       dispatch(typedAction(CREATE_ARTICLE, data));
@@ -26,6 +29,7 @@ export function createArticle(data: ArticleData) {
 
 export function fetchArticles(url: string) {
   return function(dispatch: Function) {
+    dispatch(typedAction(GET_ALL_ARTICLES_REQUEST))
     return ArticleService.retrieveAll(url)
      .then(({ data }) => {
         dispatch(typedAction(GET_ALL_ARTICLES, data.articles));
@@ -39,6 +43,7 @@ export function fetchArticles(url: string) {
 
 export function getSingleArticle(url: string) {
   return function(dispatch: Function) {
+    dispatch(typedAction('get/article/request'))
     return ArticleService.getArticle(url)
      .then(({ data }) => {
         dispatch(typedAction(GET_SINGLE_ARTICLE, data.article));
@@ -52,6 +57,7 @@ export function getSingleArticle(url: string) {
 
 export function updateArticle(slug: string | undefined, data: ArticleData) {
   return function(dispatch: Function) {
+    dispatch(typedAction('update/article/request'))
     return ArticleService.updateArticle(slug, data)
      .then((response) => {
       dispatch(typedAction(UPDATE_ARTICLE, data));
@@ -66,6 +72,7 @@ export function updateArticle(slug: string | undefined, data: ArticleData) {
 
 export function deleteArticle(url: string | undefined) {
   return function(dispatch: Function) {
+    dispatch(typedAction('delete/article/request'))
     return ArticleService.deleteArticle(url)
      .then((response) => {
       dispatch(typedAction(DELETE_ARTICLE));

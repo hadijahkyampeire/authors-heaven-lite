@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AddArticle /> snapshot test 1`] = `
+<div>
+  <section
+    class="add-article-page"
+  >
+    <div
+      class="app-header"
+    >
+      <span
+        class="bx--tooltip--definition bx--tooltip--a11y"
+      >
+        <button
+          aria-describedby="definition-tooltip-1"
+          class="bx--tooltip__trigger bx--tooltip--a11y bx--tooltip__trigger--definition bx--tooltip--top bx--tooltip--align-start"
+          type="button"
+        >
+          <div>
+            <svg
+              aria-hidden="true"
+              fill="currentColor"
+              focusable="false"
+              height="32"
+              preserveAspectRatio="xMidYMid meet"
+              viewBox="0 0 32 32"
+              width="32"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M14 26L15.41 24.59 7.83 17 28 17 28 15 7.83 15 15.41 7.41 14 6 4 16 14 26z"
+              />
+            </svg>
+          </div>
+        </button>
+        <span
+          class="bx--assistive-text"
+          id="definition-tooltip-1"
+          role="tooltip"
+        >
+          Go Back
+        </span>
+      </span>
+      <div
+        class="title"
+      >
+        Create Article
+      </div>
+    </div>
+    <form
+      class="bx--form"
+      data-testid="article-form"
+    >
+       
+      <div
+        style="margin-bottom: 2rem;"
+      >
+        <div
+          class="bx--form-item bx--text-input-wrapper"
+        >
+          <label
+            class="bx--label"
+            for="title"
+          >
+            Title
+          </label>
+          <div
+            class="bx--text-input__field-outer-wrapper"
+          >
+            <div
+              class="bx--text-input__field-wrapper"
+            >
+              <input
+                class="bx--text-input bx--text__input"
+                id="title"
+                name="title"
+                placeholder="Enter article title"
+                required=""
+                title="Enter article title"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        style="margin-bottom: 2rem;"
+      >
+        <div
+          class="bx--form-item bx--text-input-wrapper"
+        >
+          <label
+            class="bx--label"
+            for="description"
+          >
+            Description
+          </label>
+          <div
+            class="bx--text-input__field-outer-wrapper"
+          >
+            <div
+              class="bx--text-input__field-wrapper"
+            >
+              <input
+                class="bx--text-input bx--text__input"
+                id="description"
+                name="description"
+                placeholder="Enter description"
+                required=""
+                title="Enter description"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        style="margin-bottom: 2rem;"
+      >
+        <div
+          class="bx--form-item"
+        >
+          <label
+            class="bx--label"
+            for="body"
+          >
+            Body
+          </label>
+          <div
+            class="bx--text-area__wrapper"
+          >
+            <textarea
+              class="bx--text-area"
+              cols="50"
+              id="body"
+              name="body"
+              placeholder="Enter article body"
+              rows="4"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="action-buttons"
+      >
+        <button
+          class="button cancel-create-btn"
+        >
+          Cancel
+        </button>
+        <button
+          class="bx--btn bx--btn--secondary submit-article bx--btn bx--btn--primary"
+          tabindex="0"
+          type="button"
+        >
+          Save as Draft
+        </button>
+        <button
+          class="bx--btn bx--btn--primary submit-article bx--btn bx--btn--primary"
+          tabindex="0"
+          type="button"
+        >
+          Submit And Publish
+        </button>
+      </div>
+       
+    </form>
+  </section>
+</div>
+`;

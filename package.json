@@ -77,5 +77,17 @@
     "coveralls": "^3.1.1",
     "gulp-sass": "^5.0.0",
     "sass": "^1.39.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{ts,tsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!**/src/reportWebVitals.ts",
+      "!**/src/index.ts",
+      "!**/*.eslintrc.ts",
+      "!**/coverage/**",
+      "!**/store.ts"
+    ]
   }
 }

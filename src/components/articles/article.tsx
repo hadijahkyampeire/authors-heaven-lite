@@ -25,7 +25,7 @@ export const Article: React.FC<Props> = ({ article, fetchArticle, email, deleteA
 
   const hasPermission = email === article?.author?.email;
   return (
-    <section className="article-page">
+    <section className="article-page" data-testid="article-page">
       <Header title={`Viewing ${article?.title }`}/>
       <div>
         <div className="article-title">{article?.title}</div>
@@ -36,7 +36,7 @@ export const Article: React.FC<Props> = ({ article, fetchArticle, email, deleteA
         </div>
         {hasPermission ? (
           <>
-            <div className="article-footer">
+            <div className="article-footer" data-testid="article-footer">
               <Link to={`${url}/edit`}>Edit Article</Link>
               <button onClick={() => setOpenDelete(article?.slug)}>Delete Article</button>
               <button>Share Article</button>
@@ -44,13 +44,14 @@ export const Article: React.FC<Props> = ({ article, fetchArticle, email, deleteA
           </>
           )
         : null}
-        <DialogModal 
+        {openDelete === article?.slug ? <DialogModal 
           open={openDelete === article?.slug} 
           closeModal={() => setOpenDelete(undefined)}
           onSubmit={() => deleteArticle(article?.slug)}
           title={`Delete ${article?.title}`} 
           text='Are you sure you want to delete this Article?' 
            />
+        : null}
       </div>
     </section>
   );
