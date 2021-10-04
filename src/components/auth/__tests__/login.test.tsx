@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { fireEvent } from "@testing-library/react";
 import { render } from "testUtils";
-import firebase from 'firebase/app';
+// import firebase from 'firebase/app';
 
 import  { LoginPage } from "../login";
 

@@ -25,7 +25,7 @@ export const AddArticleForm: React.FC<Props> = ({ onSubmit, form, setForm, conte
 
   const handleSave = (e: any) => { e.preventDefault(); onSubmit(form);}
   return (
-    <Form>
+    <Form data-testid="article-form">
       <div style={{marginBottom: '2rem'}}>
       <TextInput
         id="title"

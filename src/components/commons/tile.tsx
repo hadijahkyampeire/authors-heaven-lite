@@ -25,7 +25,7 @@ export const DataTile: React.FC<Props> = ({ article, handleDelete, email }) => {
   const limit = 200;
   const truncate = body && body.trim().length > limit;
   return (
-    <div className="article-tile">
+    <div className="article-tile" data-testid="data-tile">
       <div className="tile-title">{title}</div>
       <div className="tile-content">
         <Link to={`${url}${slug}`} className="des-and-body">
