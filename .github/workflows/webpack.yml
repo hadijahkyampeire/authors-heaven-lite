@@ -22,8 +22,19 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Build
-      run: |
-        npm install
-        npx webpack
-        npm run test -- --coverage
+    - run: npm install
+    - name: Unit tests
+      run: npm run test
+    - name: start app
+      run: npm start
+    - run: npm run test:integration
+    # capture the screenshots on failure
+    - uses: actions/upload-artifact@v2
+      if: failure()
+      with:
+        name: cypress-screenshots
+        path: cypress/screenshots
+        if-no-files-found: ignore
+    - uses: coverallsapp/github-action@v1.1.2
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
