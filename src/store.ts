@@ -1,12 +1,10 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, Store } from 'redux';
 import reduxThunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { rootReducer as reducers } from './reducers';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { AppState } from 'types';
-
-const thunk = reduxThunk.withExtraArgument({});
 
 const saveState = (appState: AppState) => {
   const state = {
@@ -60,4 +58,12 @@ store.subscribe(() => {
   saveState(store.getState());
 });
 
+declare global {
+  interface Window {
+    store: Store;
+  }
+}
 
+if ("Cypress" in window) {
+  window.store = store;
+}

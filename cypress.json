@@ -1,0 +1,15 @@
+{
+  "baseUrl": "http://localhost:3030",
+  "defaultCommandTimeout": 8000,
+  "requestTimeout": 6000,
+  "responseTimeout": 90000,
+  "retries": {
+    "runMode": 1,
+    "openMode": 0
+  },
+  "supportFile": "cypress/support/index.ts",
+  "testFiles": "**/*.{feature,features}",
+  "viewportWidth": 1000,
+  "viewportHeight": 1000,
+  "video": false
+}
