@@ -9,25 +9,27 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 16.x]
     
     steps:
     - uses: actions/checkout@v2
 
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js 10
       uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: '10'
 
     - run: npm install
     - name: Unit tests
       run: npm run test:ci
-    - name: start app
-      run: npm start
-    - run: npm run test:integration
+    - name: Cypress run
+      uses: cypress-io/github-action@v2
+      with:
+        start: npm start
+        # quote the url to be safe against YML parsing surprises
+        wait-on: 'http://localhost:3030'
+        # the entire command will automatically be prefixed with "npm"
+        # and we need the second "npm" to execute "cypress run ..." command line
+        run: npm run test:integration
     # capture the screenshots on failure
     - uses: actions/upload-artifact@v2
       if: failure()
