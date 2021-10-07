@@ -48,6 +48,7 @@
     "start": "PORT=3030 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "test:ci": "CI=true react-scripts test -u --testPathPattern='.*/tests/unit/|.*/__tests__/' --ci --coverage",
     "test:integration": "cypress run",
     "cypress": "cypress open",
     "coverage": "react-scripts test --env=jsdom --coverage",
