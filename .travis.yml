@@ -9,9 +9,9 @@ install:
 script:
   - npm run test -- --coverage
 
-script:
-  - npm start
-  - npm run test:integration
+# script:
+#   - npm start
+#   - npm run test:integration
  
 after_script:
   - COVERALLS_REPO_TOKEN=$coveralls_repo_token npm run coveralls
