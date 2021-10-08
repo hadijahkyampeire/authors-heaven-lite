@@ -8,7 +8,7 @@ install:
  
 script:
   - npm run test:ci
-  - npm run build
+  - npm run start
   - npm run test:integration
  
 after_script:
