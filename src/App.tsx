@@ -24,7 +24,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <NavBar />
-      <ToastContainer autoClose={2000} position="top-right" />
+      <ToastContainer autoClose={2000} position="top-right" data-testid="notification-toaster" />
       <Switch>
         <Route exact path="/" component={requireAnonymous(Landing)} />
         <Route path="/register" component={requireAnonymous(Register)} />

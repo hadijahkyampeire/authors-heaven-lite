@@ -4,10 +4,14 @@ export interface UserData {
   password: string;
 };
 
+export interface ApiTokens {
+  access: string;
+  refresh: string;
+}
 export interface ApiUser {
   username?: string;
   email: string;
-  token: string;
+  tokens: ApiTokens;
 };
 
 export interface FireBaseUser {

@@ -23,6 +23,7 @@
     "carbon-components-react": "^7.25.0",
     "carbon-icons": "^7.0.7",
     "classnames": "^2.3.1",
+    "cypress": "^8.5.0",
     "firebase": "^8.10.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -47,6 +48,9 @@
     "start": "PORT=3030 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "test:ci": "CI=true react-scripts test -u --testPathPattern='.*/tests/unit/|.*/__tests__/' --ci --coverage",
+    "test:integration": "cypress run",
+    "cypress": "cypress open",
     "coverage": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
     "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
@@ -55,6 +59,13 @@
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "cypress/**/*.ts"
+        ]
+      }
     ]
   },
   "browserslist": {
@@ -70,13 +81,24 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/cypress": "^7.0.6",
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.6",
+    "@types/cypress-cucumber-preprocessor": "^4.0.0",
     "@types/carbon-components-react": "^7.36.1",
     "@types/lodash": "^4.14.173",
     "@types/react-router-dom": "^5.1.8",
     "@types/redux-mock-store": "^1.0.3",
     "coveralls": "^3.1.1",
+    "cucumber": "^7.0.0-rc.0",
+    "cypress-cucumber-preprocessor": "^4.3.0",
     "gulp-sass": "^5.0.0",
-    "sass": "^1.39.0"
+    "sass": "^1.39.0",
+    "ts-loader": "^6.2.1"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "nonGlobalStepBaseDir": "cypress/support/step_definitions/**/"
   },
   "jest": {
     "collectCoverageFrom": [
