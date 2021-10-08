@@ -13,6 +13,7 @@ cache:
 before_script:
   - npm run build
   - npm start --silent
+  - echo fs.inotify.max_user_watches=524288 
 
 script:
   - npm run test:ci
