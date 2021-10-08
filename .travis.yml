@@ -2,7 +2,7 @@ language: node_js
  
 node_js:
   - stable
- 
+
 install:
   - npm install
  
@@ -11,13 +11,13 @@ cache:
     - node_modules
 
 before_script:
+  - echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
   - npm run build
   - npm start --silent
-  - echo fs.inotify.max_user_watches=524288 
 
 script:
   - npm run test:ci
-  - $(npm bin)/cypress run --record
+  - npm run test:integration
  
 after_script:
   - COVERALLS_REPO_TOKEN=$coveralls_repo_token npm run coveralls
