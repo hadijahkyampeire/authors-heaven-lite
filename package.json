@@ -46,7 +46,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "PORT=3030 react-scripts start",
+    "start": "my-server -p 3030",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test:ci": "CI=true react-scripts test -u --testPathPattern='.*/tests/unit/|.*/__tests__/' --ci --coverage",

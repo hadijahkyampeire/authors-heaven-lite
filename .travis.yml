@@ -24,8 +24,8 @@ before_install:
 install:
   - npm install
 
-before_script:
-  - npm run build
+# before_script:
+#   - npm run build
 
 jobs:
   fail_fast: true
