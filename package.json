@@ -50,8 +50,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test:ci": "CI=true react-scripts test -u --testPathPattern='.*/tests/unit/|.*/__tests__/' --ci --coverage",
-    "test:integration": "cypress run",
+    "cy:run": "cypress run",
     "cypress": "cypress open",
+    "test:cypress:ci": "start-server-and-test start http://localhost:3030 cy:run",
     "coverage": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
     "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
@@ -85,8 +86,8 @@
     "@testing-library/cypress": "^7.0.6",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
-    "@types/cypress-cucumber-preprocessor": "^4.0.0",
     "@types/carbon-components-react": "^7.36.1",
+    "@types/cypress-cucumber-preprocessor": "^4.0.0",
     "@types/lodash": "^4.14.173",
     "@types/react-router-dom": "^5.1.8",
     "@types/redux-mock-store": "^1.0.3",
@@ -95,6 +96,7 @@
     "cypress-cucumber-preprocessor": "^4.3.0",
     "gulp-sass": "^5.0.0",
     "sass": "^1.39.0",
+    "start-server-and-test": "^1.14.0",
     "ts-loader": "^6.2.1"
   },
   "cypress-cucumber-preprocessor": {

@@ -26,17 +26,16 @@ install:
 
 before_script:
   - npm run build
-  - npm start --silent
 
 jobs:
   fail_fast: true
 
   include:
-    - stage: Tesing
+    - stage: Testing
       name: Unit tests
       script: npm run test:ci
     - name: Cypress cucumber tests
-      script: npm run test:integration
+      script: npm run test:cypress:ci
  
 after_script:
   - COVERALLS_REPO_TOKEN=$coveralls_repo_token npm run coveralls
