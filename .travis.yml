@@ -10,12 +10,11 @@ addons:
   chrome: stable
 
 cache:
-  npm: true
   directories:
-    - ~/ .npm
+    - ~/.cache/npm
     - ./node_modules
-    - ~/ .cache
-    - ~/ .cache/Cypress
+    - ~/.cache
+    - ~/.cache/Cypress
 
 before_install:
   # Fixes an issue where the max file watch count is exceeded, triggering ENOSPC
