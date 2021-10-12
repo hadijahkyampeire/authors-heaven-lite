@@ -22,9 +22,8 @@ jobs:
       - run: npm install
       - name: Unit tests
         run: npm run test:ci
-      - name: Start App
-        run: npm start
-      - run: npm run test:integration
+      - name: Run cypress tests
+      - run: npm run test:cypress:ci
       # capture the screenshots on failure
       - uses: actions/upload-artifact@v2
         if: failure()
