@@ -11,9 +11,11 @@ before_install:
 install:
   - npm install
 
-script:
+before_script:
   - npm run build
   - npm start --silent
+
+script:
   - npm run test:ci
   - npm run test:integration
  
