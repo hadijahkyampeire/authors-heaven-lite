@@ -53,7 +53,7 @@
     "test:ci": "CI=true react-scripts test -u --testPathPattern='.*/tests/unit/|.*/__tests__/' --ci --coverage",
     "cy:run": "cypress run",
     "cypress": "cypress open",
-    "test:cypress:ci": "start-server-and-test start http://localhost:3030 cy:run",
+    "test:cypress:ci": "start-server-and-test start http://127.0.0.1:3030 cy:run",
     "coverage": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
     "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
