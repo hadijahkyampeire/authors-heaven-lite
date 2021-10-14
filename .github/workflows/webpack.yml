@@ -17,11 +17,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '10'
-      - name: Cache Gradle packages
-      - uses: actions/cache@v2
-        with:
-          path: |
-            ~/.npm
 
       - name: Start App
         run: npm install
