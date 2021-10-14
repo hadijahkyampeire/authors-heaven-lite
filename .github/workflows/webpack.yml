@@ -21,11 +21,10 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            ~/ .npm
-            ./node_modules
+            ~/.npm
              ~/ .cache
-            ~/ .cache/Cypress
-      - run: npm install
+      - name: Start App
+        run: npm install
       - name: Unit tests
         run: npm run test:ci
       - name: Run cypress tests
