@@ -22,7 +22,7 @@ jobs:
         with:
           path: |
             ~/.npm
-             ~/ .cache
+            ~/.cache
       - name: Start App
         run: npm install
       - name: Unit tests
