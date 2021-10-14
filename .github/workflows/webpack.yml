@@ -17,12 +17,13 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '10'
-      - name: Cache npm packages
-        uses: actions/cache@v2
+      - name: Cache Gradle packages
+      - uses: actions/cache@v2
         with:
           path: |
             ~/.npm
             ~/.cache
+
       - name: Start App
         run: npm install
       - name: Unit tests
@@ -36,6 +37,3 @@ jobs:
           name: cypress-screenshots
           path: cypress/screenshots
           if-no-files-found: ignore
-      - uses: coverallsapp/github-action@v1.1.2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
