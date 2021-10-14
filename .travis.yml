@@ -18,10 +18,10 @@ install:
   - npm install
 
 cache:
+  # cache both npm modules and Cypress binary
   directories:
-    - ~/.cache/npm
+    - ~/.npm
     - ~/.cache
-    - ~/.cache/Cypress
 
 # before_script:
 #   - npm run build
