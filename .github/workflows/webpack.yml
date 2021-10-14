@@ -22,7 +22,6 @@ jobs:
         with:
           path: |
             ~/.npm
-            ~/.cache
 
       - name: Start App
         run: npm install
