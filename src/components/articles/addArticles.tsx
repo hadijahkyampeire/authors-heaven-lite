@@ -27,15 +27,16 @@ export const AddArticle: React.FC<Props> = ({ newArticle, onSubmit }) => {
   const [form, setForm] = useState<ArticleData>(initialValues);
 
   const publishedForm = {...form, published: true };
-  const handlePublish = (e: any) => { e.preventDefault(); onSubmit(publishedForm); }
+  const handlePublish = (e: any) => { e.preventDefault(); onSubmit(publishedForm); };
+  const handleSave = (e: any) => { e.preventDefault(); onSubmit(form); };
  
   if (newArticle) {
-    return <Redirect to='/articles/' />
+    return <Redirect to={newArticle.published === true ? '/articles/published/' : '/articles/'} />
   }
   return (
     <section className="add-article-page">
       <Header title='Create Article'/>
-      <AddArticleForm newArticle={newArticle} onSubmit={handlePublish} form={form} setForm={setForm} />
+      <AddArticleForm newArticle={newArticle} onPublish={handlePublish} onSave={handleSave} form={form} setForm={setForm} />
     </section>
   );
 };

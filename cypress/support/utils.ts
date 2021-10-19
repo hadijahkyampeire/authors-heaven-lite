@@ -22,8 +22,15 @@ export const getAuthToken = () =>
     .invoke("getState")
     .its("auth")
     .its("user")
+    .its("user")
     .its("tokens")
-    .then(tokens => `Token ${tokens.access}`);
+    .then(tokens => `Bearer ${tokens.access}`);
 
 export const getUser = () => Cypress.env("EMAIL") || "testUser@authorheaven.com";
 export const getPassword = () => Cypress.env("PASSWORD") || "Test@123";
+export const getArticleSlug = () => Cypress.env("articleSlug");
+export const setArticleSlug = (articleSlug: string) =>
+  Cypress.env("articleSlug", articleSlug);
+export const getPublishedArticleSlug = () => Cypress.env("publishedArticleSlug");
+export const setPublishedArticleSlug = (articleSlug: string) =>
+  Cypress.env("publishedArticleSlug", articleSlug);
