@@ -38,7 +38,10 @@ export const EditArticle: React.FC<Props> = ({ updatedArticle, onUpdate, article
 
   useEffect(() => setForm({...initialValues, ...article }), [article]); // eslint-disable-line
 
-  const handleSubmit = (e: any) => {e.preventDefault(); onUpdate(article?.slug,form );}
+  const publishedForm = {...form, published: true };
+
+  const handlePublish = (e: any) => { e.preventDefault(); onUpdate(article?.slug, publishedForm ); };
+  const handleSave = (e: any) => { e.preventDefault(); onUpdate(article?.slug, form); };
 
   if (updatedArticle) {
     return <Redirect to='/articles/' />
@@ -46,7 +49,7 @@ export const EditArticle: React.FC<Props> = ({ updatedArticle, onUpdate, article
   return (
     <section className="add-article-page">
       <Header title={`Editing ${article?.title }`}/>
-      <AddArticleForm onSubmit={handleSubmit} form={form} setForm={setForm} context='Edit' />
+      <AddArticleForm onSave={handleSave} onPublish={handlePublish} form={form} setForm={setForm} context='Edit' />
     </section>
   );
 };

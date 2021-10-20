@@ -21,7 +21,6 @@ export function createArticle(data: ArticleData) {
       toast.success('Article Created');
     })
     .catch(e => {
-      console.log(e);
       toast.error('Failure to create article')
     });
   };

@@ -152,6 +152,7 @@ exports[`<AddArticle /> snapshot test 1`] = `
         </button>
         <button
           class="bx--btn bx--btn--secondary submit-article bx--btn bx--btn--primary"
+          id="create-as-draft"
           tabindex="0"
           type="button"
         >
@@ -159,6 +160,7 @@ exports[`<AddArticle /> snapshot test 1`] = `
         </button>
         <button
           class="bx--btn bx--btn--primary submit-article bx--btn bx--btn--primary"
+          id="create-and-publish"
           tabindex="0"
           type="button"
         >

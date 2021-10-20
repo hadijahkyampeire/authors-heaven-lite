@@ -8,7 +8,8 @@ import  { AddArticleForm } from "../addArticle";
 type articleFormProps = React.ComponentProps<typeof AddArticleForm>;
 
 const baseProps: articleFormProps = {
-  onSubmit: jest.fn(),
+  onPublish: jest.fn(),
+  onSave: jest.fn(),
   form: { title: '', description: '', body: ''},
   setForm: jest.fn()
 };
@@ -73,7 +74,7 @@ describe("<ArticleForm />", () => {
     expect(submitButton).toBeInTheDocument();
 
     fireEvent.click(submitButton);
-    expect(baseProps.onSubmit).toBeCalled();
+    expect(baseProps.onPublish).toBeCalled();
 
   });
 
@@ -87,11 +88,11 @@ describe("<ArticleForm />", () => {
     const submitAndPublish = getByText('Update And Publish');
     expect(submitDraft).toBeInTheDocument();
     fireEvent.click(submitDraft);
-    expect(baseProps.onSubmit).toBeCalledWith({"body": "the body", "description": "test description", "published": false, "title": "some title"});
+    expect(baseProps.onSave).toBeCalled();
 
     expect(submitAndPublish).toBeInTheDocument();
     fireEvent.click(submitAndPublish);
-    expect(baseProps.onSubmit).toBeCalledWith({"body": "the body", "description": "test description", "published": false, "title": "some title"});
+    expect(baseProps.onPublish).toBeCalled();
 
   });
 });

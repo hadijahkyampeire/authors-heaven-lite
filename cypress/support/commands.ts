@@ -7,9 +7,10 @@ import {
   getUser,
   getPassword,
   getAuthToken,
+  getArticleSlug
 } from "./utils";
 
-const apiUrl: string = Cypress.env("API_URL") || "http://localhost:3030";
+const apiUrl: string = Cypress.env("API_URL") || "http://authors-social-platform.herokuapp.com/api/v1";
 
 Cypress.Commands.add("logout", () => {
   // if we're not on a page, we're not logged in
@@ -29,51 +30,125 @@ Cypress.Commands.add("logout", () => {
   });
 });
 
-// Cypress.Commands.add(
-//   "login",
-//   (email: string = getUser(), password: string = getPassword()) => {
-//     cy.url().then(url => {
-//       if (url === undefined || url === null || url === "about:blank") {
-//         cy.visit("/");
-//       }
+Cypress.Commands.add(
+  "login",
+  (email: string = getUser(), password: string = getPassword()) => {
+    cy.url().then(url => {
+      if (url === undefined || url === null || url === "about:blank") {
+        cy.visit("/login");
+      }
 
-//       getStore().then(store => {
-//         if (store === undefined) {
-//           throw "Could not load the Redux store for this application";
-//         }
+      getStore().then(store => {
+        if (store === undefined) {
+          throw "Could not load the Redux store for this application";
+        }
 
-//         // already logged in
-//         if (
-//           store.getState().auth.user?.email === email &&
-//           store.getState().auth.user?.tokens.access
-//         ) {
-//           return;
-//         }
+        // already logged in
+        if (
+          store.getState().auth.user?.email === email &&
+          store.getState().auth.user?.tokens.access
+        ) {
+          return;
+        }
 
-//         const token = Cypress.env("TOKEN");
+        const token = Cypress.env("TOKEN");
 
-//         if (!token) {
-//           cy.request({
-//             method: "POST",
-//             url: `${apiUrl}/auth/users/login/`,
-//             body: {
-//               email: email,
-//               password: password
-//             }
-//           }).then(response => {
-//             store.dispatch({
-//               type: LOGIN_ACTION,
-//               payload: response.body
-//             });
-//           });
-//         } else {
-//           store.dispatch({ type: LOGIN_ACTION, payload: { token: token } });
-//         }
-//       });
-//     });
-//   }
-// );
+        if (!token) {
+          cy.request({
+            method: "POST",
+            url: `${apiUrl}/auth/users/login/`,
+            body: {
+              email: email,
+              password: password
+            }
+          }).then(response => {
+            store.dispatch({
+              type: LOGIN_ACTION,
+              payload: response.body
+            });
+            const { user } = response.body;
+            localStorage.setItem('user', JSON.stringify(user));
+          });
+        } else {
+          store.dispatch({ type: LOGIN_ACTION, payload: { token: token } });
+        }
+      });
+    });
+  }
+);
 
+Cypress.Commands.add(
+  "createArticle",
+  (
+    slug: string = getArticleSlug()
+  ) => {
+    getAuthToken().then(authToken =>
+      cy
+        .request({
+          method: "GET",
+          headers: {
+            Authorization: authToken
+          },
+          url: `${apiUrl}/articles/${slug}/`,
+          failOnStatusCode: false
+        })
+        .then(response => {
+          if (response.status !== 200) {
+            cy.request({
+              method: "POST",
+              headers: {
+                Authorization: authToken
+              },
+              url: `${apiUrl}/articles/`,
+              body: {
+                slug,
+                title: 'test title',
+                description: 'test description',
+                body: 'some test body'
+              }
+            });
+          }
+        })
+    );
+    return cy.wrap(slug);
+  }
+);
+
+Cypress.Commands.add(
+  "getArticle",
+  (slug: string) => {
+    return getAuthToken().then(authToken => {
+      return cy
+        .request({
+          method: "GET",
+          headers: {
+            Authorization: authToken
+          },
+          url: `${apiUrl}/articles/${slug}/`
+        })
+        .its("body");
+    });
+  }
+);
+
+Cypress.Commands.add(
+  "deleteArticle",
+  (
+    slug: string,
+    isCleanup: boolean = false
+  ) => {
+    getAuthToken().then(authToken =>
+      cy.request({
+        method: "DELETE",
+        headers: {
+          Authorization: authToken
+        },
+        url: `${apiUrl}/articles/${slug}/`,
+        failOnStatusCode: !!!isCleanup
+      })
+    );
+  }
+);
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
